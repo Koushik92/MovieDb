@@ -1,5 +1,7 @@
 package com.example.moviedb.di
 
+import com.example.moviedb.ui.movieDetail.MovieDetailViewModel
+import com.example.moviedb.ui.movieList.MovieListViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -7,7 +9,8 @@ import javax.inject.Singleton
 @Component(modules = [(AppModule::class), RepositoryModule::class])
 interface ViewModelInjector {
 
-
+    fun inject(movieListViewModel: MovieListViewModel)
+    fun inject(movieDetailViewModel: MovieDetailViewModel)
 
 
     @Component.Builder
