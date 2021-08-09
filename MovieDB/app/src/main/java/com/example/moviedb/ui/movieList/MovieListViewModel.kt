@@ -36,11 +36,11 @@ class MovieListViewModel() : BaseViewModel() {
     }
 
     fun sortMovieByName(movieList : ArrayList<Movie>): List<Movie> {
-        return mMovieListCache.sortedBy { movieList -> movieList.name}
+        return movieList.sortedBy { movieList -> movieList.name}
     }
 
     fun sortMovieByDate(movieList : ArrayList<Movie>) : List<Movie>{
-        return mMovieListCache.sortedBy { movieList ->movieList.release_date }
+        return movieList.sortedBy { movieList ->movieList.release_date }
     }
 
 

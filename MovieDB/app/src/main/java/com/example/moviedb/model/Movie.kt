@@ -8,9 +8,9 @@ data class Movie  (
 
     var id : Long,
 
-    val original_title: String?,
+    val original_title: String? ="",
 
-    val overview: String?,
+    val overview: String? ="",
 
     val release_date: String? = "",
 
@@ -18,7 +18,7 @@ data class Movie  (
 
     val popularity: Double = 0.0,
 
-    val original_language : String?,
+    val original_language : String? ="",
 
     var name: String? = null,
 
