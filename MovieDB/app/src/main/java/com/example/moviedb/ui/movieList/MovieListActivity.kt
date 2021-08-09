@@ -115,13 +115,13 @@ class MovieListActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
         val selectedItem =  parent?.getItemAtPosition(position)
         if(selectedItem?.toString().equals(Constants.SETTING_NAME)){
             Log.i("Name Selected ",selectedItem.toString())
-            val list = mMovieListViewModel.sortMovieByName().toMutableList()
+            val list = mMovieListViewModel.sortMovieByName(mMovieListViewModel.mMovieListCache).toMutableList()
             mMovieListViewModel.mCurrentSetting = Constants.SETTING_NAME
             mAdapter.setData(list)
             mAdapter.notifyDataSetChanged()
         }else if(selectedItem?.toString().equals(Constants.SETTING_TIME)){
             Log.i("Time Selected ",selectedItem.toString())
-            val list = mMovieListViewModel.sortMovieByDate().toMutableList()
+            val list = mMovieListViewModel.sortMovieByDate(mMovieListViewModel.mMovieListCache).toMutableList()
             mMovieListViewModel.mCurrentSetting = Constants.SETTING_TIME
             mAdapter.setData(list)
             mAdapter.notifyDataSetChanged()

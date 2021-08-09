@@ -35,13 +35,15 @@ class MovieListViewModel() : BaseViewModel() {
         })
     }
 
-    fun sortMovieByName(): List<Movie> {
-        return mMovieListCache.sortedBy { list -> list.name}
+    fun sortMovieByName(movieList : ArrayList<Movie>): List<Movie> {
+        return mMovieListCache.sortedBy { movieList -> movieList.name}
     }
 
-    fun sortMovieByDate() : List<Movie>{
-        return mMovieListCache.sortedBy { list ->list.release_date }
+    fun sortMovieByDate(movieList : ArrayList<Movie>) : List<Movie>{
+        return mMovieListCache.sortedBy { movieList ->movieList.release_date }
     }
+
+
 
     override fun onCleared() {
         super.onCleared()
