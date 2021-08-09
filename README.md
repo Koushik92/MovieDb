@@ -23,7 +23,7 @@
 
 
 **[Functional Implementation Details]** - 
-- List All Movies .
+- List all Movies .
 - Display Movies by movie name 
 - Display Movies by title date 
 - Display Movie Details such as Overview ,Title  Rating and book ticket option on click f movie 
