@@ -4,8 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.moviedb.R
-import com.example.moviedb.base.Constants
-import com.example.moviedb.ui.movieDetail.MovieDetailActivity
+import com.example.moviedb.ui.movieList.MovieListActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {

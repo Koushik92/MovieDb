@@ -1,4 +1,4 @@
-package com.example.moviedb.ui
+package com.example.moviedb.ui.movieList
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +19,6 @@ import com.example.moviedb.base.Constants
 import com.example.moviedb.base.ViewModelFactory
 import com.example.moviedb.model.Movie
 import com.example.moviedb.ui.movieDetail.MovieDetailActivity
-import com.example.moviedb.ui.movieList.MovieListAdapter
-import com.example.moviedb.ui.movieList.MovieListViewModel
 import com.example.moviedb.utils.ItemOffsetDecoration
 import kotlinx.android.synthetic.main.activity_movie_list.*
 import kotlinx.android.synthetic.main.layout_progressbar.*
