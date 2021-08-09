@@ -52,7 +52,7 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun navigateToCathay() {
-        val uri: Uri = Uri.parse(BuildConfig.CATHAY_URL)
+        val uri: Uri = Uri.parse(BuildConfig.BOOK_MOVIE_URL)
         val intent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(intent)
     }
