@@ -19,7 +19,6 @@ class MovieListAdapter(private val ctx: Context?) :
     RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
     val mListOfMovies = ArrayList<Movie>()
-    val mEndReached = MutableLiveData<Boolean>()
     var mMovieClicked = MutableLiveData<Movie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -79,9 +78,7 @@ class MovieListAdapter(private val ctx: Context?) :
             Constants.POSTER_IMAGE_BASE_URL,
             Constants.POSTER_IMAGE_SIZE
         )
-        if (position == itemCount - 1) {
-            mEndReached.value = true
-        }
+
         holder.itemView.image_movie_poster.setOnClickListener {
             mMovieClicked.postValue(mListOfMovies[position])
         }

@@ -65,9 +65,7 @@ class MovieDetailActivity : AppCompatActivity() {
         mMovieDetailViewModel.mErrorOccured.observe(this, Observer {
             mMovieDetailBinding.textMovieDuration.text = getString(R.string.duration_not_available)
         })
-        mAdapter.mEndReached.observe(this, Observer {
-            mMovieDetailViewModel.mPageCount++
-        })
+
         mAdapter.mMovieClicked.observe(this, Observer {
             Intent(this, MovieDetailActivity::class.java).apply {
                 putExtra(Constants.MOVIE_ID, it)

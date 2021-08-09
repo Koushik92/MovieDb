@@ -18,7 +18,6 @@ class MovieDetailViewModel : BaseViewModel() {
 
     @set: Inject
     var apiMethods: ApiMethods? = null
-    var mPageCount = 1
     var mErrorOccured = MutableLiveData<Throwable>()
 
 

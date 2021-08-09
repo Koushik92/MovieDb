@@ -10,6 +10,7 @@
     <string name="book">Book</string>
     <string name="duration_not_available">Duration is not available</string>
     <string name="popularity">Popularity</string>
+    <string name="view_movies">View Movies</string>
     <string-array name="view_array">
         <item>Name</item>
         <item>Time</item>
