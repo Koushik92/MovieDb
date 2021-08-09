@@ -23,4 +23,8 @@
 
 
 **[Functional Implementation Details]** - 
-- Play , Pause and Stop functionalities of the Songs implemented .
+- List All Movies .
+- Display Movies by movie name 
+- Display Movies by title date 
+- Display Movie Details such as Overview ,Title  Rating and book ticket option on click f movie 
+- Book Movie option redirects user to Movie booking online website 
