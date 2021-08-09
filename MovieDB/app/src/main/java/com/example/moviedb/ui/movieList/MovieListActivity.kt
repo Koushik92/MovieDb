@@ -3,15 +3,12 @@ package com.example.moviedb.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -20,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviedb.R
 import com.example.moviedb.base.Constants
 import com.example.moviedb.base.ViewModelFactory
+import com.example.moviedb.model.Movie
 import com.example.moviedb.ui.movieDetail.MovieDetailActivity
 import com.example.moviedb.ui.movieList.MovieListAdapter
 import com.example.moviedb.ui.movieList.MovieListViewModel
@@ -71,7 +69,7 @@ class MovieListActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
     private fun initialObservers(){
         mMovieListViewModel.mListofMovies.observe(this, Observer {
             showOrHideProgress(View.GONE)
-            mAdapter.setData(it.sortedBy { it->it.name }.toMutableList())
+            mAdapter.setData(it.sortedBy { it.name }.toMutableList())
 
         })
         mMovieListViewModel.mErrorOccured.observe(this, Observer {
@@ -93,8 +91,8 @@ class MovieListActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
-        val item = menu!!.findItem(R.id.spinner)
-        val spinner = MenuItemCompat.getActionView(item) as Spinner // get the spinner
+        val item = if (menu != null) menu.findItem(R.id.spinner) else throw NullPointerException("Expression 'menu' must not be null")
+        val spinner = item.actionView as Spinner // get the spinner
 
         ArrayAdapter.createFromResource(
             this,
@@ -113,25 +111,28 @@ class MovieListActivity : AppCompatActivity(), AdapterView.OnItemSelectedListene
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val selectedItem =  parent?.getItemAtPosition(position)
-        if(selectedItem?.toString().equals(Constants.SETTING_NAME)){
-            Log.i("Name Selected ",selectedItem.toString())
-            val list = mMovieListViewModel.sortMovieByName(mMovieListViewModel.mMovieListCache).toMutableList()
+        val sortedList = getSortedList(selectedItem?.toString())
+        sortedList?.let { mAdapter.setData(it) }
+        mAdapter.notifyDataSetChanged()
+
+    }
+
+    private fun getSortedList(settingsName : String?): MutableList<Movie>? {
+        if(settingsName.equals(Constants.SETTING_NAME)){
             mMovieListViewModel.mCurrentSetting = Constants.SETTING_NAME
-            mAdapter.setData(list)
-            mAdapter.notifyDataSetChanged()
-        }else if(selectedItem?.toString().equals(Constants.SETTING_TIME)){
-            Log.i("Time Selected ",selectedItem.toString())
-            val list = mMovieListViewModel.sortMovieByDate(mMovieListViewModel.mMovieListCache).toMutableList()
+
+            return mMovieListViewModel.sortMovieByName(mMovieListViewModel.mMovieListCache).toMutableList()
+
+        }else if(settingsName.equals(Constants.SETTING_TIME)){
             mMovieListViewModel.mCurrentSetting = Constants.SETTING_TIME
-            mAdapter.setData(list)
-            mAdapter.notifyDataSetChanged()
-
+            return mMovieListViewModel.sortMovieByDate(mMovieListViewModel.mMovieListCache).toMutableList()
         }
+        return null
     }
 
+    override fun onNothingSelected(p0: AdapterView<*>?) {
 
-
-    override fun onNothingSelected(parent: AdapterView<*>?) {
     }
+
 
 }

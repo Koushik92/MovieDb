@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test
     @Test
     fun getMovieDetail() {
         val results = movieDetailRepository.getMovieDetail(597993)
-        val testObserver : TestObserver<MovieDetail> =  results!!.test()
-        testObserver.assertSubscribed()
+        val testObserver : TestObserver<MovieDetail> = if (results != null) results.test() else throw NullPointerException("Expression 'results' must not be null") 
+        testObserver.assertSubscribed( )
         testObserver.assertNoErrors()
         testObserver.assertNoTimeout()
     }

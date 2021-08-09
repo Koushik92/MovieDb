@@ -60,7 +60,6 @@ class MovieListAdapter(private val ctx: Context?) :
     }
 
     fun setData(data: MutableList<Movie>) {
-        //Collections.sort(data)
         mListOfMovies.clear()
         mListOfMovies.addAll(data)
         notifyDataSetChanged()
